@@ -43,10 +43,8 @@ class WebHookTestCase(TestCase):
 
     def test_create_hook(self):
         r = self.focus.webhook.create_webhook(
-            self.focus.webhook.create_webhook(
-                cnpj='13.861.761/0001-80',
-                event=WebHook.EVENT_NFSE,
-                url='http://minhaurl.com/nfse',
-            )
+            cnpj='13.861.761/0001-80',
+            event=WebHook.EVENT_NFSE,
+            url='http://minhaurl.com/nfse',
         )
         self.assertTrue(r.status_code in [200, 201])
