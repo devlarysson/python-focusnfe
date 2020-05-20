@@ -181,7 +181,7 @@ class Nfse(BaseAPIWrapper):
         for arg in mandatory:
             if arg not in kwargs:
                 raise NFSeException(
-                    'Argumento {0} não enviado no serviço'.format(arg),
+                    '[{0}] - Argumento não enviado no serviço'.format(arg),
                     code=NFSeException.EC_INVALID_SERVICE,
                 )
 
@@ -196,6 +196,11 @@ class Nfse(BaseAPIWrapper):
             'valor_iss': kwargs.pop('serv_valor_iss'),
         }
 
+        codigo_tributario_municipio = kwargs.pop('serv_codigo_tributario_municipio')
+        if codigo_tributario_municipio:
+            payload.update({
+                'codigo_tributario_municipio': codigo_tributario_municipio
+            })
         valor_deducoes = kwargs.pop('serv_valor_deducoes', 0)
         if valor_deducoes:
             payload.update({

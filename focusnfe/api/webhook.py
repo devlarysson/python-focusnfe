@@ -48,7 +48,7 @@ class WebHook(BaseAPIWrapper):
         event = kwargs.pop('event', '')
         if event not in WebHook.ALL_EVENTS:
             raise WebHookException(
-                'Event inválido. Valores aceitáveis são [{1}]'.format(
+                'Evento inválido. Valores aceitáveis são [{1}]'.format(
                     event, ','.join(WebHook.ALL_EVENTS)
                 ),
                 code=WebHookException.EC_INVALID_EVENT)
@@ -70,6 +70,6 @@ class WebHook(BaseAPIWrapper):
 
     def create_webhook(self, **kwargs):
         payload_dict = self.__prepare_webhook(**kwargs)
-        payload = json.dumps(payload_dict, cls=DecimalEncoder)
+        payload = json.dumps(payload_dict)
         response = self.do_post_request(self.url(), data=payload)
         return response
