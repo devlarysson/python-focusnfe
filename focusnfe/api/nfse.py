@@ -196,7 +196,7 @@ class Nfse(BaseAPIWrapper):
             'valor_iss': kwargs.pop('serv_valor_iss'),
         }
 
-        codigo_tributario_municipio = kwargs.pop('serv_codigo_tributario_municipio')
+        codigo_tributario_municipio = kwargs.pop('serv_codigo_tributario_municipio', '')
         if codigo_tributario_municipio:
             payload.update({
                 'codigo_tributario_municipio': codigo_tributario_municipio
